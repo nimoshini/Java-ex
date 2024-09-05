@@ -1,27 +1,34 @@
-import java.util.Scanner;
-class I{
-    public static void main(String[]args)
-    {
-        Scanner a=new Scanner(System.in);
-        System.out.println("Enter the code:");
-        char c=a.nextLine().charAt(0);
-        System.out.println(c);
-        if(c=='R')
-        {
-            System.out.println("REd");
-        }
-        else if(c=='B')
-        {
-            System.out.println("Blue");
 
+public class I {
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Usage: java AgeValidator <name> <age>");
+            return;
         }
-        else if(c=='O')
-        {
-            System.out.println("Orange");
+
+        String name = args[0];
+        try {
+            int age = Integer.parseInt(args[1]);
+            validateAge(age);
+            System.out.println("Name: " + name);
+            System.out.println("Age: " + age);
+
+        } catch (NumberFormatException e) {
+            System.out.println("java.lang.NumberFormatException: Age should be a valid integer.");
+        } catch (I e) {
+            System.out.println(e.getMessage());
         }
-        else 
-        {
-            System.out.println("invalid");
+    }
+
+    private static void validateAge(int age) throws I {
+        if (age < 18 || age >= 60) {
+            throw new I("Age must be between 18 and 59.");
         }
+    }
+}
+
+public class I extends Exception {
+    public I(String message) {
+        super(message);
     }
 }

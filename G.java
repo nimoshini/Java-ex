@@ -1,13 +1,27 @@
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
- class K {
+public class G {
     public static void main(String[] args) {
-        Integer[] array = {12, 34, 12, 45, 67, 89};
+        if (args.length != 5) {
+            System.out.println("Please provide exactly 5 integer arguments.");
+            return;
+        }
 
-        Set<Integer> set = new LinkedHashSet<>(Arrays.asList(array));
-        Integer[] uniqueArray = set.toArray(new Integer[0]);
+        int[] numbers = new int[5];
+        try {
+            int sum = 0;
+            for (int i = 0; i < 5; i++) {
+                numbers[i] = Integer.parseInt(args[i]);
+                sum += numbers[i];
+            }
 
-        System.out.println("Array without duplicates: " + Arrays.toString(uniqueArray));
+            double average = (double) sum / numbers.length;
+
+            System.out.println("Sum: " + sum);
+            System.out.println("Average: " + average);
+
+        } catch (NumberFormatException e) {
+            System.out.println("java.lang.NumberFormatException: Please enter valid integers.");
+        } catch (ArithmeticException e) {
+            System.out.println("java.lang.ArithmeticException: " + e.getMessage());
+        }
     }
 }

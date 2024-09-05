@@ -1,19 +1,20 @@
 public class B {
     public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4, 5}; 
-        int max = array[0];
-        int min = array[0];
-
-        for (int num : array) {
-            if (num > max) {
-                max = num;
-            }
-            if (num < min) {
-                min = num;
-            }
+        if (args.length != 1) {
+            System.out.println("Please provide a single integer command line argument.");
+            return;
         }
 
-        System.out.println("Maximum value: " + max);
-        System.out.println("Minimum value: " + min);
+        try {
+            int number = Integer.parseInt(args[0]);
+
+            System.out.println("Given Number :" + number);
+            System.out.println("Binary equivalent :" + Integer.toBinaryString(number));
+            System.out.println("Octal equivalent :" + Integer.toOctalString(number));
+            System.out.println("Hexadecimal equivalent :" + Integer.toHexString(number).toUpperCase());
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+        }
     }
 }

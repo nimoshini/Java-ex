@@ -1,16 +1,20 @@
-public class C{
+import java.util.Scanner;
+
+public class C {
     public static void main(String[] args) {
-        int[] array = {1, 4, 34, 56, 7}; 
-        int searchElement = 56; 
-        int index = -1;
-
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == searchElement) {
-                index = i;
-                break;
-            }
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter an integer between 1 and 255:");
+        int number = scanner.nextInt();
+        
+        if (number < 1 || number > 255) {
+            System.out.println("Number out of range. Please enter a number between 1 and 255.");
+        } else {
+            String binaryString = Integer.toBinaryString(number);
+            String paddedBinaryString = String.format("%8s", binaryString).replace(' ', '0');
+            System.out.println(paddedBinaryString);
         }
-
-        System.out.println(index);
+        
+        scanner.close();
     }
 }
